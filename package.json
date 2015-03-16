@@ -1,0 +1,43 @@
+{
+  "name": "macaca",
+  "version": "0.1.0",
+  "description": "macaca",
+  "keywords": ["macaca"],
+  "bin": {
+    "macaca": "./bin/macaca"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mobile-test/macaca.git"
+  },
+  "dependencies": {
+    "koa": "~0.13.0",
+    "koa-bodyparser": "~1.4.0",
+    "koa-qs": "~2.0.0",
+    "koa-session": "~3.0.0",
+    "co": "~3.1.0",
+    "debug": "~2.1.0",
+    "mkdirp": "~0.5.0",
+     "commander": "~2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "istanbul": "*",
+    "should": "~4.0.4",
+    "should-http": "0.0.2",
+    "jshint": "*"
+  },
+  "scripts": {
+    "test": "make test",
+    "jshint": "make jshint"
+  },
+  "precommit": [
+    "jshint"
+  ],
+  "homepage": "https://github.com/mobile-test/macaca",
+  "author": "xudafeng",
+  "email": "xudafeng@126.com",
+  "blog": "http://xdf.me",
+  "license": "MIT"
+}
