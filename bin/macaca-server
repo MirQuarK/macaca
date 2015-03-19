@@ -17,34 +17,16 @@
 require('colorx');
 var path = require('path');
 var program = require('commander');
-var spawn = require('child_process').spawn;
 
 var pkg = require('../package');
+var macaca = require('..');
 
 program
-  .option('-v, --versions', 'output version infomation')
-  .usage('<command> [options]')
+  .option('-p, --port',     'port to use (8080 default)')
   .parse(process.argv);
 
-if (program.versions) {
-  console.info('\n  ' + pkg.version.gray + '\n');
-  process.exit(0);
+if (!program.args[0] || parseInt(program.args[0]) || program.port) {
+  var port = parseInt(program.args[0]) || 8080;
+  program.pkg = pkg;
+  macaca.init(port, program);
 }
-
-var cmd = program.args[0];
-
-if (!cmd) {
-  return program.help();
-}
-
-cmd = path.join(__dirname, pkg.name + '-' + cmd);
-var args = program.rawArgs.slice(3);
-args.unshift(cmd);
-
-var bootstrap = spawn('node', args, {
-  stdio: 'inherit'
-});
-
-bootstrap.on('close', function(code){
-  process.exit('process exited with code ' + code);
-});
